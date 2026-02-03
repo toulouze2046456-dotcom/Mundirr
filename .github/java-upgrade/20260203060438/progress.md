@@ -19,3 +19,23 @@
   - ###
     ### ✅ Install JDK 21
   </details>
+
+  ### ❗ Setup Development Environment
+  - [[View Log]](logs/4.setupEnvironment.log)
+  
+  <details>
+      <summary>[ click to toggle details ]</summary>
+  
+  #### Errors
+  - Uncommitted changes found, please stash, commit or discard them first. You'd better let the user to choose the action to take.
+  </details>
+
+  ### ❗ Setup Development Environment
+  - [[View Log]](logs/5.setupEnvironment.log)
+  
+  <details>
+      <summary>[ click to toggle details ]</summary>
+  
+  #### Errors
+  - Uncommitted changes found, please stash, commit or discard them first. You'd better let the user to choose the action to take.
+  </details>
