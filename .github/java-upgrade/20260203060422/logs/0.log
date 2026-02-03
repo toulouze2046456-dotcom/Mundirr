@@ -1,0 +1,44 @@
+2026-02-03T06:04:22.251Z [INFO] ----------------------invoke generate_upgrade_plan----------------------
+2026-02-03T06:04:22.251Z [INFO] [Tool.invoke]({name: generate_upgrade_plan, input: {
+  "projectPath": "/Users/emilianotoulouze/vellbeing-os 2",
+  "javaVersion": "17",
+  "targetJavaVersion": "21"
+}}).
+2026-02-03T06:04:22.252Z [INFO] [Plan.tryStartTask]({tool:generate_upgrade_plan, nextTask:{type:undefined, tool:undefined}}
+2026-02-03T06:04:22.252Z [INFO] [Plan.tryStartTask]: no next task, create new one.
+2026-02-03T06:04:22.252Z [INFO] [Plan.createTaskAtStart]({tool: generate_upgrade_plan, input: {
+  "projectPath": "/Users/emilianotoulouze/vellbeing-os 2",
+  "javaVersion": "17",
+  "targetJavaVersion": "21",
+  "sessionId": "20260203060422"
+}}).
+2026-02-03T06:04:22.252Z [INFO] [Plan.tryStartTask]: starting task generatePlan
+2026-02-03T06:04:22.252Z [INFO] [Task.start](): Starting task generatePlan
+2026-02-03T06:04:22.252Z [INFO] [Task.start](1): Started task generatePlan
+2026-02-03T06:04:22.258Z [INFO] [Tool.invoke] validate GitHub Copilot license.
+2026-02-03T06:04:22.258Z [INFO] [Tool.invoke] do pre-invoke.
+2026-02-03T06:04:22.258Z [INFO] [Tool.invoke] do invoke.
+2026-02-03T06:04:26.304Z [INFO] Project dependencies loaded: [
+  "org.springframework.boot:spring-boot-starter-web:3.2.0:jar",
+  "org.springframework.boot:spring-boot-starter-data-jpa:3.2.0:jar",
+  "org.springframework.boot:spring-boot-starter-security:3.2.0:jar",
+  "org.springframework.boot:spring-boot-starter-validation:3.2.0:jar",
+  "org.springframework.boot:spring-boot-starter-mail:3.2.0:jar",
+  "io.jsonwebtoken:jjwt-api:0.12.3:jar",
+  "io.jsonwebtoken:jjwt-impl:0.12.3:jar",
+  "io.jsonwebtoken:jjwt-jackson:0.12.3:jar",
+  "org.xerial:sqlite-jdbc:3.42.0.0:jar",
+  "org.hibernate.orm:hibernate-community-dialects:6.3.1.Final:jar",
+  "org.springframework.security:spring-security-crypto:6.2.0:jar",
+  "com.google.guava:guava:32.1.3-jre:jar",
+  "io.github.cdimascio:dotenv-java:3.0.0:jar",
+  "org.projectlombok:lombok:1.18.30:jar",
+  "org.springframework.boot:spring-boot-devtools:3.2.0:jar"
+]
+2026-02-03T06:04:26.304Z [INFO] Project modules loaded: [
+  "com.health:vellbeing-os:1.0.0"
+]
+2026-02-03T06:04:26.322Z [ERROR] [Tool.invoke] error occurs when invoking tool generate_upgrade_plan: Error: Failed to get git status for /Users/emilianotoulouze/vellbeing-os 2: fatal: .git non è un repository Git (né lo è alcuna delle directory genitrici).
+2026-02-03T06:04:26.322Z [INFO] [Task.complete](1): Completing task generatePlan
+2026-02-03T06:04:26.322Z [INFO] ----------------------invoked generate_upgrade_plan----------------------
+2026-02-03T06:04:26.324Z [INFO] [Task.complete](1): Completed task generatePlan

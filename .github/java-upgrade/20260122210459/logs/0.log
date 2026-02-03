@@ -1,0 +1,120 @@
+2026-01-22T21:04:59.709Z [INFO] ----------------------invoke generate_upgrade_plan----------------------
+2026-01-22T21:04:59.709Z [INFO] [Tool.invoke]({name: generate_upgrade_plan, input: {
+  "projectPath": "/Users/emilianotoulouze/vellbeing-os",
+  "javaVersion": "17",
+  "targetJavaVersion": "21"
+}}).
+2026-01-22T21:04:59.710Z [INFO] [Plan.tryStartTask]({tool:generate_upgrade_plan, nextTask:{type:undefined, tool:undefined}}
+2026-01-22T21:04:59.710Z [INFO] [Plan.tryStartTask]: no next task, create new one.
+2026-01-22T21:04:59.710Z [INFO] [Plan.createTaskAtStart]({tool: generate_upgrade_plan, input: {
+  "projectPath": "/Users/emilianotoulouze/vellbeing-os",
+  "javaVersion": "17",
+  "targetJavaVersion": "21",
+  "sessionId": "20260122210459"
+}}).
+2026-01-22T21:04:59.710Z [INFO] [Plan.tryStartTask]: starting task generatePlan
+2026-01-22T21:04:59.710Z [INFO] [Task.start](): Starting task generatePlan
+2026-01-22T21:04:59.711Z [INFO] [Task.start](1): Started task generatePlan
+2026-01-22T21:04:59.719Z [INFO] [Tool.invoke] validate GitHub Copilot license.
+2026-01-22T21:04:59.719Z [INFO] [Tool.invoke] do pre-invoke.
+2026-01-22T21:04:59.720Z [INFO] [Tool.invoke] do invoke.
+2026-01-22T21:04:59.746Z [INFO] [Task.start](): Starting task generatePlan
+2026-01-22T21:04:59.747Z [INFO] [Task.start](1.1): Started task generatePlan
+2026-01-22T21:04:59.747Z [INFO] ---------------------prepare install_jdk----------------------
+2026-01-22T21:04:59.747Z [INFO] [Tool.prepareInvocation]({name: install_jdk, input: {
+  "sessionId": "20260122210459",
+  "version": "17",
+  "dest": "/Users/emilianotoulouze/.jdk",
+  "reason": "JDK 17 is required to build the project, but not found on the machine."
+}}).
+2026-01-22T21:04:59.747Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-01-22T21:05:00.674Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Download and install JDK",
+  "confirmationMessages": {
+    "title": "Download and install JDK",
+    "message": "\nJDK 17 is required to build the project, but not found on the machine.\nThis tool will download and install JDK 17 from Microsoft with below settings.\n- **Version**: 17\n- **Vendor**: Microsoft\n- **Url**: https://aka.ms/download-jdk/microsoft-jdk-17.0.16-macOS-aarch64.tar.gz\n- **Destination**: `/Users/emilianotoulouze/.jdk`\n- **Checksum**: SHA256: 112b5ef5f4295e78571a70c6d229077512ef584e51c344af7cdbc2aedc9871b3\n- **Signature**: https://aka.ms/download-jdk/microsoft-jdk-17.0.16-macOS-aarch64.tar.gz.sig\n- **Public Key**: http://aka.ms/microsoft_jdk_public_key\n"
+  }
+}}).
+2026-01-22T21:05:00.674Z [INFO] ----------------------prepared install_jdk----------------------
+2026-01-22T21:05:05.605Z [INFO] ----------------------invoke install_jdk----------------------
+2026-01-22T21:05:05.605Z [INFO] [Tool.invoke]({name: install_jdk, input: {
+  "sessionId": "20260122210459",
+  "version": "17",
+  "dest": "/Users/emilianotoulouze/.jdk",
+  "reason": "JDK 17 is required to build the project, but not found on the machine."
+}}).
+2026-01-22T21:05:05.606Z [INFO] [Plan.tryStartTask]({tool:install_jdk, nextTask:{type:undefined, tool:undefined}}
+2026-01-22T21:05:05.606Z [INFO] [Plan.tryStartTask]: no next task, create new one.
+2026-01-22T21:05:05.606Z [INFO] [Plan.createTaskAtStart]({tool: install_jdk, input: {
+  "sessionId": "20260122210459",
+  "version": "17",
+  "dest": "/Users/emilianotoulouze/.jdk",
+  "reason": "JDK 17 is required to build the project, but not found on the machine."
+}}).
+2026-01-22T21:05:05.606Z [INFO] [Plan.tryStartTask]: starting task detached
+2026-01-22T21:05:05.606Z [INFO] [Task.start](): Starting task detached
+2026-01-22T21:05:05.606Z [INFO] [Task.start](): Started task detached
+2026-01-22T21:05:05.606Z [INFO] [Tool.invoke] validate GitHub Copilot license.
+2026-01-22T21:05:05.606Z [INFO] [Tool.invoke] do pre-invoke.
+2026-01-22T21:05:05.606Z [INFO] [Tool.invoke] do invoke.
+2026-01-22T21:05:28.214Z [INFO] [Tool.invoke]({result: {
+  "result": {
+    "name": "java",
+    "path": "/Users/emilianotoulouze/.jdk/jdk-17.0.16/jdk-17.0.16+8/Contents/Home/bin",
+    "version": "17.0.16"
+  },
+  "message": "JDK 17 is installed at /Users/emilianotoulouze/.jdk/jdk-17.0.16/jdk-17.0.16+8/Contents/Home/bin",
+  "telemetry": {
+    "tool": "JDK",
+    "version": "17"
+  }
+}}).
+2026-01-22T21:05:28.214Z [INFO] [Plan.completeTask](task:{id:<unknown>, type:detached}, result:{
+  "result": {
+    "name": "java",
+    "path": "/Users/emilianotoulouze/.jdk/jdk-17.0.16/jdk-17.0.16+8/Contents/Home/bin",
+    "version": "17.0.16"
+  },
+  "message": "JDK 17 is installed at /Users/emilianotoulouze/.jdk/jdk-17.0.16/jdk-17.0.16+8/Contents/Home/bin",
+  "telemetry": {
+    "tool": "JDK",
+    "version": "17"
+  }
+})
+2026-01-22T21:05:28.214Z [INFO] [Task.complete](): Completing task detached
+2026-01-22T21:05:28.215Z [INFO] [Task.complete](): Completed task detached
+2026-01-22T21:05:28.215Z [INFO] [Plan.completeTask]: no next task, create new one.
+2026-01-22T21:05:28.215Z [INFO] [Plan.completeTask]: getting next task.
+2026-01-22T21:05:28.215Z [INFO] [Plan.getNextTaskAtComplete]({task: [Detached] install_jdk, result: {
+  "name": "java",
+  "path": "/Users/emilianotoulouze/.jdk/jdk-17.0.16/jdk-17.0.16+8/Contents/Home/bin",
+  "version": "17.0.16"
+}}).
+2026-01-22T21:05:28.215Z [INFO] [Plan.completeTask]: next task is {type:undefined, expectedToolName:undefined}.
+2026-01-22T21:05:28.215Z [INFO] [Plan.completeTask]: next task has no instruction. Just return JDK 17 is installed at /Users/emilianotoulouze/.jdk/jdk-17.0.16/jdk-17.0.16+8/Contents/Home/bin
+2026-01-22T21:05:28.215Z [INFO] [Tool.invoke]({message: JDK 17 is installed at /Users/emilianotoulouze/.jdk/jdk-17.0.16/jdk-17.0.16+8/Contents/Home/bin
+}).
+2026-01-22T21:05:28.215Z [INFO] ----------------------invoked install_jdk----------------------
+2026-01-22T21:05:28.240Z [INFO] [Task.complete](1.1): Completing task generatePlan
+2026-01-22T21:05:28.243Z [INFO] [Task.complete](1.1): Completed task generatePlan
+2026-01-22T21:05:41.252Z [INFO] Project dependencies loaded: [
+  "org.springframework.boot:spring-boot-starter-web:3.2.0:jar",
+  "org.springframework.boot:spring-boot-starter-data-jpa:3.2.0:jar",
+  "org.springframework.boot:spring-boot-starter-security:3.2.0:jar",
+  "org.springframework.boot:spring-boot-starter-validation:3.2.0:jar",
+  "org.springframework.boot:spring-boot-starter-mail:3.2.0:jar",
+  "io.jsonwebtoken:jjwt-api:0.12.3:jar",
+  "io.jsonwebtoken:jjwt-impl:0.12.3:jar",
+  "io.jsonwebtoken:jjwt-jackson:0.12.3:jar",
+  "org.xerial:sqlite-jdbc:3.42.0.0:jar",
+  "org.hibernate.orm:hibernate-community-dialects:6.3.1.Final:jar",
+  "org.springframework.security:spring-security-crypto:6.2.0:jar",
+  "org.projectlombok:lombok:1.18.30:jar"
+]
+2026-01-22T21:05:41.253Z [INFO] Project modules loaded: [
+  "com.health:vellbeing-os:1.0.0"
+]
+2026-01-22T21:05:41.269Z [ERROR] [Tool.invoke] error occurs when invoking tool generate_upgrade_plan: Error: Failed to get git status for /Users/emilianotoulouze/vellbeing-os: fatal: .git non è un repository Git (né lo è alcuna delle directory genitrici).
+2026-01-22T21:05:41.270Z [INFO] [Task.complete](1): Completing task generatePlan
+2026-01-22T21:05:41.270Z [INFO] ----------------------invoked generate_upgrade_plan----------------------
+2026-01-22T21:05:41.270Z [INFO] [Task.complete](1): Completed task generatePlan
