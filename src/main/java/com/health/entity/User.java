@@ -30,6 +30,16 @@ public class User {
     private String gender;
     private String sexualActivityFreq;
     private Double testosteroneScore;
+
+    // Referral fields
+    @Column(unique = true)
+    private String referralCode;       // Unique invite code (e.g., "emiliano-7f3a")
+
+    private Long referredByUserId;     // UID of the user who invited this user
+
+    // Identity Wall — SHA-256(normalize(cardholderName) + normalize(billingAddress))
+    @Column(unique = true)
+    private String identityHash;
     
     // Constructors
     public User() {}
@@ -72,4 +82,15 @@ public class User {
     
     public Double getTestosteroneScore() { return testosteroneScore; }
     public void setTestosteroneScore(Double testosteroneScore) { this.testosteroneScore = testosteroneScore; }
+
+    // Referral getters/setters
+    public String getReferralCode() { return referralCode; }
+    public void setReferralCode(String referralCode) { this.referralCode = referralCode; }
+
+    public Long getReferredByUserId() { return referredByUserId; }
+    public void setReferredByUserId(Long referredByUserId) { this.referredByUserId = referredByUserId; }
+
+    // Identity Wall getters/setters
+    public String getIdentityHash() { return identityHash; }
+    public void setIdentityHash(String identityHash) { this.identityHash = identityHash; }
 }

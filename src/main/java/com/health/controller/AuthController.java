@@ -39,6 +39,7 @@ public class AuthController {
             String email = (String) body.get("email");
             String password = (String) body.get("password");
             String name = (String) body.getOrDefault("name", "");
+            String referralCode = (String) body.getOrDefault("referralCode", null);
             boolean rememberMe = Boolean.TRUE.equals(body.get("rememberMe"));
             
             if (email == null || email.isBlank()) {
@@ -48,7 +49,7 @@ public class AuthController {
                 return ResponseEntity.badRequest().body(Map.of("error", "Password is required"));
             }
             
-            Map<String, Object> result = authService.register(email, password, name, rememberMe);
+            Map<String, Object> result = authService.register(email, password, name, rememberMe, referralCode);
             return ResponseEntity.ok(result);
             
         } catch (RuntimeException e) {

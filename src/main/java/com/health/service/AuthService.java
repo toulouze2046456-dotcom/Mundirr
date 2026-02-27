@@ -1,8 +1,10 @@
 package com.health.service;
 
 import com.health.entity.PasswordResetToken;
+import com.health.entity.PendingReferralReward;
 import com.health.entity.User;
 import com.health.repository.PasswordResetTokenRepository;
+import com.health.repository.PendingReferralRewardRepository;
 import com.health.repository.UserRepository;
 import com.health.security.JwtUtil;
 import org.slf4j.Logger;
@@ -33,6 +35,9 @@ public class AuthService {
     
     @Autowired
     private PasswordResetTokenRepository tokenRepository;
+
+    @Autowired
+    private PendingReferralRewardRepository referralRewardRepository;
     
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -47,7 +52,7 @@ public class AuthService {
      * Register a new user
      */
     @Transactional
-    public Map<String, Object> register(String email, String password, String name, boolean rememberMe) {
+    public Map<String, Object> register(String email, String password, String name, boolean rememberMe, String referralCode) {
         // Check if email already exists
         if (userRepository.existsByEmail(email)) {
             throw new RuntimeException("Email already registered");
@@ -61,7 +66,28 @@ public class AuthService {
         
         // Create and save user
         User user = new User(email, passwordEncoder.encode(password), name);
+
+        // Generate a unique referral code for this new user
+        user.setReferralCode(generateReferralCode(name));
+        
+        // If signed up via a referral link, link to inviter
+        User referrer = null;
+        if (referralCode != null && !referralCode.isBlank()) {
+            referrer = userRepository.findByReferralCode(referralCode).orElse(null);
+            if (referrer != null) {
+                user.setReferredByUserId(referrer.getId());
+            }
+        }
+        
         user = userRepository.save(user);
+        
+        // §1.12 — Credit LOCKED referral reward to the inviter (500 $MUND)
+        if (referrer != null) {
+            PendingReferralReward reward = new PendingReferralReward(referrer, email, name);
+            reward.setReferred(user);
+            referralRewardRepository.save(reward);
+            logger.info("Referral reward created: {} → {} (500 $MUND locked)", referrer.getEmail(), email);
+        }
         
         // Generate JWT token
         String token = jwtUtil.generateToken(user.getId(), user.getEmail(), rememberMe);
@@ -75,7 +101,32 @@ public class AuthService {
         
         logger.info("New user registered: {}", email);
         
-        return buildAuthResponse(user, token);
+        Map<String, Object> response = buildAuthResponse(user, token);
+        if (referrer != null) {
+            response.put("referredBy", referrer.getName());
+        }
+        return response;
+    }
+
+    /**
+     * Generate a unique referral code: "<firstName>-<4chars>"
+     */
+    private String generateReferralCode(String displayName) {
+        String namePart = (displayName == null || displayName.isBlank()) ? "user" : displayName;
+        namePart = namePart.toLowerCase().replaceAll("[^a-z0-9]", "");
+        if (namePart.length() > 12) namePart = namePart.substring(0, 12);
+        if (namePart.isEmpty()) namePart = "user";
+
+        String chars = "abcdefghjkmnpqrstuvwxyz23456789";
+        SecureRandom rng = new SecureRandom();
+        for (int attempt = 0; attempt < 10; attempt++) {
+            StringBuilder sb = new StringBuilder(namePart).append('-');
+            for (int i = 0; i < 4; i++) sb.append(chars.charAt(rng.nextInt(chars.length())));
+            String code = sb.toString();
+            if (userRepository.findByReferralCode(code).isEmpty()) return code;
+        }
+        // Fallback: use timestamp suffix
+        return namePart + "-" + Long.toHexString(System.currentTimeMillis()).substring(6);
     }
     
     /**

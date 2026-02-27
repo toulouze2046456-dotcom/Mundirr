@@ -369,7 +369,7 @@ public class WikidataMovieService {
             byte[] hashBytes = md.digest(normalizedName.getBytes("UTF-8"));
             StringBuilder sb = new StringBuilder();
             for (byte b : hashBytes) {
-                sb.append(String.format("%02x", b));
+                sb.append("%02x".formatted(b));
             }
             String hash = sb.toString();
             
