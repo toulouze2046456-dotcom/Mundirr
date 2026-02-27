@@ -1,69 +1,32 @@
-# ========================
-# SECURITY - Sensitive Files
-# ========================
-# Database files (may contain user data)
-*.db
-*.sqlite
-*.sqlite3
-vellbeing.db
+# Dependencies
+node_modules/
+client/node_modules/
 
-# Environment files with secrets
+# Build outputs
+client/dist/
+client/build/
+server/target/
+
+# Environment variables
 .env
 .env.local
-.env.*.local
-*.env
-
-# ========================
-# Java / Maven
-# ========================
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+client/.env
+client/.env.local
 
 # IDE
+.vscode/
 .idea/
-*.iml
-*.ipr
-*.iws
-.project
-.classpath
-.settings/
 *.swp
 *.swo
 
-# Compiled files
-*.class
-*.jar
-*.war
-*.ear
-
-# Log files
-*.log
-logs/
-
-# ========================
-# Node / Frontend
-# ========================
-node_modules/
-dist/
-build/
-.cache/
-*.tsbuildinfo
-
-# ========================
-# OS Files
-# ========================
+# OS
 .DS_Store
-.DS_Store?
-._*
 Thumbs.db
-ehthumbs.db
 
-# ========================
-# Misc
-# ========================
-*.bak
-*.tmp
-*.temp
-.vscode/settings.json
+# Logs
+*.log
+npm-debug.log*
+
+# Capacitor
+client/android/app/build/
+client/ios/App/build/
